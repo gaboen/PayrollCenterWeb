@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../Styles/demo_table.css" /> 
+    <link rel="stylesheet" type="text/css" href="../Styles/customcontrols.css" /> 
+    <script type="text/javascript" src="../Scripts/PayrollCenterSettings.js"></script>
+    <script type="text/javascript" src="../Scripts/Standardizer.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="../Scripts/knockout.debug.js"></script>
+    <script type="text/javascript" src="../Scripts/TrafficCop.js"></script>
+    <script type="text/javascript" src="../Scripts/infuser.js"></script>
+    <script type="text/javascript" src="../Scripts/koExternalTemplateEngine.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="../Scripts/vm/DivisionContextMenu.js"></script>
+    <script type="text/javascript" src="../Scripts/vm/PreImportValidationViewModel.js"></script>
+<!--    <script type="text/javascript" src="../Scripts/jquery.contextmenu.js"></script>-->
+
+</head>
+<body>
+        <div class="SpreadSheetLayoutDiv" style="height:auto">
+            <h1 >
+            Payroll Center
+            </h1>
+            <div>
+                <h2 data-bind="text : DivisionNameLabel"></h2>
+            </div>
+
+            <p></p>
+            <table >
+				<tr style="float:left" >
+					<td style="width: 254px"><input id="btnReturn" type="button" data-bind="click: ReturnToDivDetails" value="Return to Division Details"/> <br /></td>
+				</tr>
+
+            </table>
+
+            <div id="ValidationTablesDiv" style="width:auto; position:absolute; top:inherit">
+                <!--<h3>results: </h3>-->
+                
+                <!-- ko if: HireDateRecordsExist() -->
+                    <br />
+                    <br />
+                    <h3>Missing Hire Dates</h3>
+                    <br />
+                    <div id="dynamic1"></div>
+                <!-- /ko -->
+
+                <!-- ko if: SSNRecordsExist() -->
+                    <br />
+                    <br />
+                    <h3>Missing SSNs</h3>
+                    <br />
+                    <div id="dynamic2"></div>
+                <!-- /ko -->
+
+                <!-- ko if: RefNumberRecordsExist() -->
+                    <br />
+                    <br />
+                    <h3>Duplicate Reference Numbers</h3>
+                    <br />
+                    <div id="dynamic3"></div>
+                <!-- /ko -->
+
+                <!-- ko if: ContractorTINRecordsExist() -->
+                    <br />
+                    <br />
+                    <h3>Missing Contractor TINs</h3>
+                    <br />
+                    <div id="dynamic4"></div>
+                <!-- /ko -->
+                
+             </div>
+
+            <div id="LoaderDiv" 
+                style="display:block; position:absolute; background:#BCC2C1; text-align:center; height:100%; width:100%; top:inherit; " >
+                <span id='LoaderText' style="position:relative; font-family: 'Arial Black'; font-size: large;" >Loading...</span> <p />
+                <img src="../images/Loading.gif" style="position:relative; height:50px" id="loadingGif">
+            </div>
+
+
+             
+
+
+
+        
+        </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿body {
+}
+
+.PageLayoutDiv
+{
+   background-color: #414A54; 
+   min-height:675px; 
+   min-width:800px;
+       
+}
+
+.SpreadSheetLayoutDiv
+{
+   background-color: #DCDCDC; 
+}
+
+.ControlBoxLayoutDiv
+{
+    padding: 10px;
+    text-align: left;
+    background-color: #999999;
+    top: 0px;
+}
+
+.SpreadSheetLayoutDiv > div > h3
+{
+    margin-top: 0px;
+    text-align:center;
+}
+
+.PageLayoutHeader
+{
+    color: #CCCCCC;
+    margin-left: 10px;
+}
+
+.DivisionBlock
+{
+   padding: 10px;
+}
+
+.ControlBlock
+{
+    padding: 10px;
+}
+
+.CollapsedElement
+{
+    visibility:collapse;
+    height: 0px;
+}
+
+.DivisionIndicator
+{
+    background-color: #DCDCDC; 
+    width: 150px; 
+    height: 25px; 
+    font-family: Arial;
+    font-weight: bold; 
+    text-align: center;
+}
+.MainStatusIndicator
+{
+    background-color: #669900; 
+    width: 150px; 
+    height: 25px; 
+    font-weight: bold; 
+    text-align: center;
+}
+.ActionStatusIndicator
+{
+    background-color: #CC9900; 
+    width: 150px; 
+    height: 25px; 
+    font-weight: bold; 
+    text-align: center;
+}
+.ErrorStatusIndicator
+{
+    background-color:#95AFFF; 
+    width: 150px; 
+    height: 25px; 
+    font-weight: bold; 
+    text-align: center;
+}
+.ProcessTextIndicator
+{
+    background-color: #DCDCDC; 
+    width: 300px; 
+    height: 25px; 
+    font-family: Arial;
+    font-size:small;
+    font-weight: bold; 
+    text-align: center;
+}
+.PausedStatusIndicator
+{
+    background-color:#FCB03D; 
+    width: 300px; 
+    height: 25px; 
+    font-weight: bold; 
+    text-align: center;
+}
+.MoneyTextBox
+{
+    background-color:#FFFFFF; 
+    width: 100px; 
+    height: 20px; 
+    font-weight: bold; 
+    text-align: right;
+}
+
+

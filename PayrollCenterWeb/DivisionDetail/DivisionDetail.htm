@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../Styles/customcontrols.css" /> 
+    <script type="text/javascript" src="../Scripts/PayrollCenterSettings.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="../Scripts/knockout.debug.js"></script>
+    <script type="text/javascript" src="../Scripts/TrafficCop.js"></script>
+    <script type="text/javascript" src="../Scripts/infuser.js"></script>
+    <script type="text/javascript" src="../Scripts/koExternalTemplateEngine.js"></script>
+    <script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/vm/DivisionContextMenu.js"></script>
+    <script type="text/javascript" src="../Scripts/vm/DivisionDetailViewModel.js"></script>
+
+</head>
+<body>
+    <div class="PageLayoutDiv">
+        <h1 class="PageLayoutHeader">
+        Payroll Center
+        </h1>
+
+    <table border="1" style="width:845px">
+		<tr>
+			<td>
+					<h2 class="PageLayoutHeader" data-bind="text : DivisionNameLabel"></h2>
+					<h2 class="PageLayoutHeader" data-bind="text : DivisionBatchLabel"></h2>
+
+				<div id="divisionBlock" class="DivisionBlock">  
+              <div id="MSI1" class="MainStatusIndicator" data-bind="style: { background: division().DivisionStatusColor}" >
+                  <label class="rcmenuEnabled" data-bind="text : division().DivisionStatus"></label>
+              </div>
+              <div id="ASI1" class="ActionStatusIndicator" data-bind="style: { background: division().ActionStatusColor}" >
+                  <label class="rcmenuEnabled" data-bind="text: division().ActionStatus"></label>
+              </div>
+              <div id="CSI1" class="ErrorStatusIndicator" data-bind="style: { background: division().ErrorStatusColor}" >
+                  <label class="rcmenuEnabled" data-bind="text: division().ErrorStatus"></label>
+              </div>
+          </div>
+									
+				</td>
+				<td>
+          <div class="ControlBoxLayoutDiv" style="position: relative; top: 3px; width: 512px; left: 25px; height: 124px;">
+              <span style="position:relative; font-family: 'Arial'; font-size:medium">Status Detail</span>
+              <div class="ProcessTextIndicator" data-bind="text: division().StatusDetailText" style="width: 509px; height: 99px;"></div>
+              <!--<span style="position:relative; font-family: 'Arial'; font-size:medium">Process Text</span>
+              <div class="ProcessTextIndicator" data-bind="text: ProcessText"></div>-->
+
+
+          </div>
+                
+        </td>
+		</tr>
+	</table>
+
+        
+
+
+
+    <table border="1" style="width:845px">
+        <tr style="border-style: double">
+            <td>
+                <div class="ControlBoxLayoutDiv" style="width:496px">
+                    <span style="position:relative; font-family: 'Arial'; font-size:medium">Payroll Engine Pausing</span>
+                    <table >
+				        <tr>
+					        <td style="width: 254px"><input id="btnPause" type="button" data-bind="click: SubmitDivisionPause, value: DivisionPaused().buttonText" value="Pause Division Processing" /> <br /></td>
+					        <td>
+						        <div id="Div1" class="PausedStatusIndicator" data-bind="visible: DivisionPaused().value" style="width: 224px" >
+			                        <label class="rcmenuEnabled" data-bind="text: DivisionPaused().text"></label>
+			                    </div>
+			                </td>
+				        </tr>
+				        <tr>
+					        <td style="width: 254px"><input id="btnPauseExtract" type="button" data-bind="click: PauseExtractRequest, value: ExtractPaused().buttonText" value="Pause Extract"/> <br /></td>
+					        <td>
+						        <div id="Div2" class="PausedStatusIndicator" data-bind="visible: ExtractPaused().value" style="width: 225px" >
+			                        <label class="rcmenuEnabled" data-bind="text: ExtractPaused().text"></label>
+			                    </div>
+			                </td>
+			                            
+				        </tr>
+				        <tr>
+					        <td style="width: 254px"><input id="btnPauseImport" type="button" data-bind="click: PauseStagingImport, value: ImportPaused().buttonText" value="Pause Staging Import"/> <br /></td>
+					        <td>
+						        <div id="Div3" class="PausedStatusIndicator" data-bind="visible: ImportPaused().value" style="width: 225px" >
+			                        <label class="rcmenuEnabled" data-bind="text: ImportPaused().text"> </label>
+			                    </div>
+			                </td>
+				        </tr>
+
+			        </table>
+              	</div>
+            </td>
+            <td style="width: 278px">
+                <input id="Button2" type="button" value="Validation Results" data-bind="click: DisplayValidation, visible: FailedValidation" /><br />
+                <input id="Button3" type="button" value="View Line-by-Line Comparison" data-bind="click: DisplayLineByLineComparison , visible: UnbalancedExtract" />
+                <div id="PittsburghStatusBlock" class="DivisionBlock" data-bind="visible: DivisionCode == '3'">  
+                    <div id="Div5" class="ActionStatusIndicator" style="border-bottom-style: dotted; border-bottom-width: 1px" data-bind="style: { background: pittsburghStatus().PITStatusColor}" >
+                        <label class="rcmenuEnabled" data-bind="text : 'PIT ' +  pittsburghStatus().PITStatus"></label>
+                    </div>
+                    <div id="Div6" class="ActionStatusIndicator" style="border-bottom-style: dotted; border-bottom-width: 1px" data-bind="style: { background: pittsburghStatus().JOHStatusColor}" >
+                        <label class="rcmenuEnabled" data-bind="text: 'JOH ' + pittsburghStatus().JOHStatus"></label>
+                    </div>
+                    <div id="Div7" class="ActionStatusIndicator" data-bind="style: { background: pittsburghStatus().ERIStatusColor}" >
+                        <label class="rcmenuEnabled" data-bind="text: 'ERI ' + pittsburghStatus().ERIStatus"></label>
+                    </div>
+                    <p ></p>
+                </div>
+
+            </td>
+
+
+            </tr>
+    </table>
+            
+
+
+        <div>
+            <p></p>
+            <table >
+                                <!--<tr>
+					<td style="width: 254px"><input id="btnSubmitJob1" type="button" data-bind="click: SubmitJob1" value="Submit Test Job"/> <br /></td>
+				</tr>-->
+				<tr style="float:left" >
+					<td style="width: 254px"><input id="btnCompareAB" type="button" data-bind="click: CompareAB" value="Compare Extracted Data"/> <br /></td>
+					<td style="width: 254px"><input id="btnCompareAC" type="button" data-bind="click: CompareAC" value="Compare Staging Data"/> <br /></td>
+                    <td style="width: 254px"><input id="btnReturn" type="button" data-bind="click: ReturnToMainView" value="Return to Main View"/> <br /></td>
+				</tr>
+				<tr>
+					
+					
+				</tr>
+                <tr>
+					
+					
+				</tr>
+            </table>
+        
+        </div>
+
+        <div id="PayDataComparisonDiv">
+            <iframe id="ComparisonFrame" scrolling="no" src="PayDataComparison.htm" style="width: 800px; height: 180px; "> </iframe> <br />
+            <input id="Button1" type="button" data-bind="click: HideComparisonDiv" value="Hide" /> 
+        </div>
+        
+        
+
+        
+
+    </div>
+</body>
+</html>

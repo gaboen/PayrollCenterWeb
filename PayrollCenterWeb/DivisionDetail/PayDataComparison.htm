@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../Styles/customcontrols.css" /> 
+    <script type="text/javascript" src="../Scripts/PayrollCenterSettings.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="../Scripts/knockout.debug.js"></script>
+    <script type="text/javascript" src="../Scripts/TrafficCop.js"></script>
+    <script type="text/javascript" src="../Scripts/infuser.js"></script>
+    <script type="text/javascript" src="../Scripts/koExternalTemplateEngine.js"></script>
+    <script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/accounting.js"></script>
+    <script type="text/javascript" src="../Scripts/vm/DivisionContextMenu.js"></script>
+    <script type="text/javascript" src="../Scripts/vm/PayDataComparisonViewModel.js"></script>
+    <style type="text/css">
+        .style2
+        {
+            width: 180px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="SpreadSheetLayoutDiv" style="height:auto">
+
+		<div id="ExtractFiguresTable">
+			<h3>Extract Comparison</h3>
+			<table style="width: 100%; height:auto">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><label id="Label1" style="font-weight:bold; font-family:Arial">Pay</label></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><label id="Label2" style="font-weight:bold; font-family:Arial">Billing</label></td>
+                    <td></td>
+                </tr>
+				<tr>
+					<td class="style2" ></td>
+					<td style="width: 133px"><label id="Label3">Visits</label></td>
+					<td style="width: 128px"><label id="Label4">Expenses</label></td>
+					<td style="width: 151px"><label id="Label5">Total Pay</label></td>
+					<td style="width: 29px">&nbsp;</td>
+					<td style="width: 133px"><label id="Label6">Visits</label></td>
+					<td style="width: 128px"><label id="Label7">Expenses</label></td>
+					<td style="width: 151px"><label id="Label8">Total Billing</label></td>
+				</tr>
+				<tr>
+					<td class="style2" ><label id="Label9">Procura:</label></td>
+					<td style="width: 133px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ProVisitGrossPay"></div></td>
+					<td style="width: 128px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ProExpenseGrossPay"></div></td>
+					<td style="width: 151px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ProTotalPay"></div></td>
+					<td style="width: 29px; height: 15px;"></td>
+					<td style="width: 133px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ProVisitTotalBilling"></div></td>
+					<td style="width: 128px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ProExpenseTotalBilling"></div></td>
+					<td style="width: 151px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ProTotalBilling"></div></td>
+				</tr>
+				<tr>
+					<td class="style2" ><label id="Label10">Extracted:</label></td>
+					<td style="width: 133px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ExtractVisitGrossPay"></div></td>
+					<td style="width: 128px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ExtractExpenseGrossPay"></div></td>
+					<td style="width: 151px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ExtractTotalPay"></div></td>
+					<td style="width: 29px; height: 15px;"></td>
+					<td style="width: 133px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ExtractVisitTotalBilling"></div></td>
+					<td style="width: 128px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ExtractExpenseTotalBilling"></div></td>
+					<td style="width: 151px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().ExtractTotalBilling"></div></td>
+				</tr>
+				<tr>
+					<td class="style2" >Difference:</td>
+					<td style="width: 133px"></td>
+					<td style="width: 128px">&nbsp;</td>
+					<td style="width: 151px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().TotalPayDifference, style: {background: Math.abs(PayDataTotals().TotalPayDifference) > 1.0 ? '#FF6A6A' : '#6CE8C2' } "></div></td>
+					<td style="width: 29px">&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td style="width: 151px; height: 15px;"><div class="MoneyTextBox" data-bind="text: PayDataTotals().TotalBillingDifference, style: {background: Math.abs(PayDataTotals().TotalBillingDifference) > 1.0 ? '#FF6A6A' : '#6CE8C2' } "></div></td>
+				</tr>
+			</table>
+			
+		</div>
+
+        <div id="StagingFiguresTable">
+			<h3>Staging Comparison</h3> 
+			<table style="width: 100%; height:auto">
+				<tr>
+					<td class="style2" ></td>
+					<td style="width: 133px"><label id="Label11">Gross Pay</label></td>
+					<td style="width: 128px">Travel Pay</td>    
+					<td style="width: 151px">Contractor Services</td>
+					<td style="width: 29px">&nbsp;</td>
+					<td style="width: 133px"><label id="Label12">Total Pay</label></td>
+
+				</tr>
+				<tr>
+					<td class="style2" ><label id="Label13">Staging:</label></td>
+					<td style="width: 133px; height: 15px;"><div class="MoneyTextBox" data-bind="text: StagingPaydataTotals().GrossPay"></div></td>
+					<td style="width: 128px; height: 15px;"><div class="MoneyTextBox" data-bind="text: StagingPaydataTotals().TravelPay"></div></td>
+					<td style="width: 151px; height: 15px;"><div class="MoneyTextBox" data-bind="text: StagingPaydataTotals().ContractorServices"></div></td>
+					<td style="width: 29px; height: 15px;"></td>
+					<td style="width: 133px; height: 15px;"><div class="MoneyTextBox" data-bind="text: StagingPaydataTotals().TotalGrossPay"></div></td>
+
+				</tr>
+				<tr>
+					<td class="style2" ><label id="Label14">Procura:</label></td>
+					<td style="width: 133px; height: 15px;">&nbsp;</td>
+					<td style="width: 128px; height: 15px;">&nbsp;</td>
+					<td style="width: 151px; height: 15px;">&nbsp;</td>
+					<td style="width: 29px; height: 15px;"></td>
+					<td style="width: 133px; height: 15px;"><div class="MoneyTextBox" data-bind="text: StagingPaydataTotals().ProcuraPayTotal"></div></td>
+
+				</tr>
+				<tr>
+					<td class="style2" ><label id="Label15">Difference:</label></td>
+					<td style="width: 133px"></td>
+					<td style="width: 128px">&nbsp;</td>
+					<td style="width: 151px; height: 15px;">&nbsp;</td>
+					<td style="width: 29px">&nbsp;</td>
+					<td><div class="MoneyTextBox" data-bind="text: StagingPaydataTotals().TotalPayDifference, style: {background: Math.abs(StagingPaydataTotals().TotalPayDifference) > 2.0 ? '#FF6A6A' : '#6CE8C2' } "></div></td>
+				</tr>
+			</table>
+			
+		</div>
+        
+    </div>
+
+    <div id="LoaderDiv" 
+        style="display:block; position:absolute; background:#BCC2C1; text-align:center; height:100%; width:100%; top:0px; " >
+        <span id='LoaderText' style="position:relative; font-family: 'Arial Black'; font-size: large;" >Loading...</span> <p />
+        <img src="../images/Loading.gif" style="position:relative; height:50px" id="loadingGif">
+    </div>
+
+
+</body>
+</html>

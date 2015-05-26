@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Staging" Class="SQL1DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=TSOSQL1;Initial Catalog=Staging;Persist Security Info=True;User ID=PayrollCenter" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="StagingConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="prc.ReturnPayDataComparison" Method="ReturnPayDataComparison">
+    <Parameter Name="BatchNumber" Parameter="batchNumber" Type="System.String" DbType="VarChar(6)" />
+    <Parameter Name="DivisionName" Parameter="divisionName" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="Procura_ReturnPayDataComparisonResult">
+      <Column Name="ProVisitGrossPay" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ProVisitTotalBilling" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ProExpenseGrossPay" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ProExpenseTotalBilling" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ExtractVisitGrossPay" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ExtractVisitTotalBilling" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ExtractExpenseGrossPay" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ExtractExpenseTotalBilling" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="prc.ReturnStagingPayDataTotals" Method="ReturnStagingPayDataTotals">
+    <Parameter Name="BatchNumber" Parameter="batchNumber" Type="System.String" DbType="VarChar(6)" />
+    <Parameter Name="DivisionName" Parameter="divisionName" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="Procura_ReturnStagingPayDataTotalsResult">
+      <Column Name="BatchNumber" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="DivisionName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GrossPayAmount" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
+      <Column Name="ContractServicesPayAmount" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
+      <Column Name="TravelPayAmount" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
+      <Column Name="TotalGrossPayAmount" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
+      <Column Name="TotalBillingAmount" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="prc.ReturnPayDataLineByLineDifferences" Method="ReturnPayDataLineByLineDifferences">
+    <Parameter Name="BatchNumber" Parameter="batchNumber" Type="System.String" DbType="VarChar(6)" />
+    <Parameter Name="DivisionCode" Parameter="divisionCode" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="Procura_ReturnPayDataLineByLineDifferencesResult">
+      <Column Name="SocialSecurityNumber" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeSurname" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeFirstName" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="ExtractBilling" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProcuraBilling" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExtractPay" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProcuraPay" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingDifference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PayDifference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

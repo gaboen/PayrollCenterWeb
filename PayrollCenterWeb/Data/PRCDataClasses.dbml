@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PYRCNT" Class="PRCDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=TSOSQL4;Initial Catalog=PYRCNT;Persist Security Info=True;User ID=PayrollCenter" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PYRCNTConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DivisionStatus" Member="DivisionStatus">
+    <Type Name="DivisionStatus">
+      <Column Name="DivisionCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StatusCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionStatusCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ErrorStatusCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RequestCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RequestID" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="StatusDetailText" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="PauseDivision" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PauseExtract" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PauseImport" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DivisionStatusView" Member="DivisionStatusViews">
+    <Type Name="DivisionStatusView">
+      <Column Name="DivisionCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DivisionName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DivisionStatus" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="DivisionStatusColor" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="ActionStatus" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ActionStatusColor" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="ErrorStatus" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ErrorStatusColor" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="PauseDivision" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PauseExtract" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PauseImport" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RequestCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RequestID" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="StatusDetailText" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.PauseDivision" Method="PauseDivision">
+    <Parameter Name="DivisionCode" Parameter="divisionCode" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="PauseType" Parameter="pauseType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="PauseCode" Parameter="pauseCode" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="RequesterID" Parameter="requesterID" Type="System.String" DbType="VarChar(25)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SubmitDivisionRequest" Method="SubmitDivisionRequest">
+    <Parameter Name="DivisionCode" Parameter="divisionCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RequestCode" Parameter="requestCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RequestText" Parameter="requestText" Type="System.String" DbType="VarChar(1000)" />
+    <Parameter Name="RequesterID" Parameter="requesterID" Type="System.String" DbType="VarChar(25)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SubmitOverrideExtractBalanceRequest" Method="SubmitOverrideExtractBalanceRequest">
+    <Parameter Name="DivisionCode" Parameter="divisionCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RequesterID" Parameter="requesterID" Type="System.String" DbType="VarChar(25)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetPittsburgStatus" Method="GetPittsburgStatus">
+    <ElementType Name="GetPittsburgStatusResult">
+      <Column Name="ERIStatus" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="JOHStatus" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PITStatus" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

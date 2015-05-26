@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="PRCDataClasses">
+  <DataContextMoniker Name="/PRCDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="ed01782c-2c11-487d-b38c-e7c409277fa0" absoluteBounds="3.5, 1.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/PRCDataClassesDataContext/DivisionStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8266806-a4be-42d3-ad06-3dec66d9ed75" absoluteBounds="3.5150000000000006, 2.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="990d4c98-a492-4738-ab03-3a584c69ddfd" absoluteBounds="6, 1.75, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/PRCDataClassesDataContext/DivisionStatusView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c5e8fe70-fd18-4c4e-84a3-f3e785f16074" absoluteBounds="6.0150000000000006, 2.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

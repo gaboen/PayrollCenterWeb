@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="Styles/jquery.contextmenu.css" /> 
+    <title></title>
+</head>
+
+<script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="Scripts/jquery.contextmenu.js"></script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#simpleCallback").contextMenu({
+            menu: 'simpleCallbackMenu',
+            onSelect: function (e) {
+                alert("You clicked on a menu item!\n\nThe item's action is: " + e.action + "\nThe item's id is: " + e.id);
+            }
+        });
+    });
+</script> 
+
+
+<body>
+    
+    
+    <div id="simpleCallback">Right click inside bordered container</div>
+	
+    <div id="simpleCallbackMenu">
+      <ul>
+         <li id="MenuItem1"><img src="images/icon1.png" /><a href="#Item1">Menu Item 1</a></li>
+         <li id="MenuItem2"><a href="#Item2">Menu Item 2</a></li>
+         <li id="MenuItem3"><a href="#Item3">Menu Item 3</a>
+            <ul>
+               <li id="MenuItem3.1"><a href="#Item3.1">Menu Item 3.1</a></li>
+               <li id="MenuItem3.2"><a href="#Item3.2">Menu Item 3.2</a></li>
+               <li id="MenuItem3.3"><a href="#Item3.3">Menu Item 3.3</a>
+                  <ul>
+                     <li id="MenuItem3.3.1"><a href="#Item3.3.1">Menu Item 3.3.1</a></li>
+                     <li id="MenuItem3.3.2"><a href="#Item3.3.2">Menu Item 3.3.2</a></li>
+                     <li id="MenuItem3.3.3"><a href="#Item3.3.3">Menu Item 3.3.3</a></li>
+                     <li id="MenuItem3.3.4"><a href="#Item3.3.4">Menu Item 3.3.4</a></li>
+                  </ul>
+               </li>
+               <li id="MenuItem3.4"><a href="#Item3.4">Menu Item 3.4</a></li>
+            </ul>
+         </li>
+         <li id="MenuItem4" class="separator"><a href="#Item4">Menu Item 4</a></li>
+      </ul>
+   </div>
+
+
+
+</body>
+</html>

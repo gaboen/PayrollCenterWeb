@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" href="JUI/css/jquery-ui.css" rel="stylesheet"/>
+    <link type="text/css" href="Styles/customcontrols.css" rel="stylesheet"/> 
+    <link type="text/css" href="Styles/jquery.contextMenu1.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="Scripts/PayrollCenterSettings.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="JUI/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="Scripts/knockout.debug.js"></script>
+    <script type="text/javascript" src="Scripts/TrafficCop.js"></script>
+    <script type="text/javascript" src="Scripts/infuser.js"></script>
+    <script type="text/javascript" src="Scripts/koExternalTemplateEngine.js"></script>
+    <script type="text/javascript" src="Scripts/json2.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.contextMenu1.js"></script>
+    <script type="text/javascript" src="Scripts/vm/MainPageViewModel.js"></script>
+
+    
+
+</head>
+
+<body>
+    <div style="background-color: #414A54; min-height:600px">
+      <table style="width: 600px;">
+        <tr>
+          <td>
+            <h1 style="color:#A9A9A9; margin-left:10px">
+              Payroll Center
+            </h1>
+          </td>
+          <td>
+            <div id="Div2">
+              <div id="Div3" class="MainStatusIndicator" data-bind="visible: RunStatus() != '', style: {background: RunStatus() === 'RUNNING' ?  '#669900' : '#CC0000'}">
+                  <label class="rcmenuEnabled" data-bind="text : RunStatus"></label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+                <h2 style="color:#A9A9A9; margin-left:10px" data-bind="text: DivisionBatchLabel"></h2>
+            </div>
+          </td>
+        </tr>
+        
+      </table>
+        
+        <div id="context-menu">
+            <a class="divisionMenuItem" id="divisionDetail">Division Detail</a>
+            <a class="divisionMenuItem" id="initExtract">Initialize Extract</a>
+            <a class="divisionMenuItem" id="restartImport">Restart Import</a>
+            <a class="divisionMenuItem" id="recheckValidation">Re-check Validation</a>
+            <a class="divisionMenuItem" id="overrideUnbalancedExtract">Bypass Unbalanced Extract</a>
+            <a class="divisionMenuItem" id="rollBackDivision">Roll-Back Division</a>
+        </div>
+
+
+        <script type="text/html" id="divisionBlock-template">
+          <div id="divisionBlock" style="float:left; padding: 10px;">  
+            <div id="DSI1" class="DivisionIndicator" >
+                <label data-bind="text : DivisionName"></label>
+            </div>
+            <div id="DivisionCodeInd" class="CollapsedElement" data-bind="text : DivisionCode" >
+                
+            </div>
+            <div id="MSI1" class="MainStatusIndicator" data-bind="style: {background: DivisionStatusColor}">
+                <label class="rcmenuEnabled" data-bind="text : DivisionStatus"></label>
+            </div>
+            <div id="ASI1" class="ActionStatusIndicator" data-bind="style: {background: ActionStatusColor}">
+                <label class="rcmenuEnabled" data-bind="text: ActionStatus"></label>
+            </div>
+            <div id="CSI1" class="ErrorStatusIndicator" data-bind="style: {background: ErrorStatusColor}">
+                <label class="rcmenuEnabled" data-bind="text: ErrorStatus"></label>
+            </div>
+          </div>
+        </script>
+        
+        <div id="DivisionsGrid">
+            <!--<h3 style="color:#A9A9A9; margin-left:10px">Division View</h3>-->
+            <!--<div>
+                <h2 style="color:#A9A9A9; margin-left:10px" data-bind="text: DivisionBatchLabel"></h2>
+            </div>-->
+            <table>
+                <tr>
+                    <td>
+                        <div id="rcdiv" style="width: 700px; overflow:hidden" 
+                            data-bind="template: { name: 'divisionBlock-template', foreach: divisions, afterRender: addContextMenus }" > 
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <ul id="menu1" class="contextMenu">
+			<li class="edit"><a href="#divisionDetail">Division Detail</a></li>
+			<li class="copy separator"><a href="#initExtract">Initialize Extract</a></li>
+	  </ul>
+    <ul id="menu2" class="contextMenu">
+			<li class="edit"><a href="#divisionDetail">Division Detail</a></li>
+			<li class="copy separator"><a href="#restartImport">Restart Import</a></li>
+	  </ul>
+    <ul id="menu3" class="contextMenu">
+			<li class="edit"><a href="#divisionDetail">Division Detail</a></li>
+	  </ul>
+
+
+</body>
+</html>
